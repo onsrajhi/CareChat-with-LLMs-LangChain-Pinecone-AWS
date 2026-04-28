@@ -11,7 +11,10 @@ COPY requirements.txt .
 
 RUN pip install --upgrade pip setuptools wheel
 
-RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu
+# torch CPU uniquement (~500MB au lieu de 2GB)
+RUN pip install --no-cache-dir \
+    torch==2.2.2 \
+    --index-url https://download.pytorch.org/whl/cpu
 
 RUN pip install --no-cache-dir -r requirements.txt
 
